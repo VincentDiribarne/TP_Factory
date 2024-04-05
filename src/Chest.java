@@ -1,5 +1,12 @@
+import toy.Toy;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Chest {
     private static Chest chest = null;
+    private final List<Toy> toys = new ArrayList<>();
 
     private Chest() {
     }
@@ -13,6 +20,21 @@ public class Chest {
     }
 
     public void open() {
-        System.out.println("Chest opened");
+        generate();
+        display();
+    }
+
+    private void generate() {
+        Random random = new Random();
+
+        for (int i = 0; i < 10; i++) {
+
+
+            //toys.add()
+        }
+    }
+
+    private void display() {
+
     }
 }

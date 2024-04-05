@@ -1,4 +1,4 @@
-package builder;
+package builder.plush;
 
 import toy.vehicule.Motor;
 

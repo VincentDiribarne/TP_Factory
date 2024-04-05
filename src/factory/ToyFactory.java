@@ -1,5 +1,7 @@
 package factory;
 
-public abstract class ToyFactory {
+import toy.Type;
 
+public abstract class ToyFactory<T> {
+    public abstract T buildToy(Type type);
 }
