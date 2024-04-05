@@ -1,4 +1,6 @@
 package toy.plush;
 
-public abstract class Plush {
+import toy.Toy;
+
+public abstract class Plush extends Toy {
 }

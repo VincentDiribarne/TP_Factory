@@ -6,10 +6,9 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum Motor {
-    DIESEL("Diesel", "Diesel"),
-    ELECTRIC("Electrique", "Electric"),
-    GASOLINE("Essence", "Gasoline");
+    DIESEL("Diesel"),
+    ELECTRIC("Electrique"),
+    GASOLINE("Essence");
 
-    private final String frenchName;
-    private final String englishName;
+    private final String name;
 }
