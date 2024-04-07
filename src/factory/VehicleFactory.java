@@ -1,14 +1,13 @@
-package factory.vehicle;
+package factory;
 
-import builder.plush.CarBuilder;
-import builder.plush.ScooterBuilder;
-import builder.plush.TruckBuilder;
-import builder.plush.VehicleBuilder;
-import factory.ToyFactory;
-import toy.Type;
+import builder.vehicle.CarBuilder;
+import builder.vehicle.ScooterBuilder;
+import builder.vehicle.TruckBuilder;
+import builder.vehicle.VehicleBuilder;
+import toy.enumeration.Type;
 import toy.vehicule.Vehicle;
 
-public class VehicleFactory extends ToyFactory<Vehicle> {
+public class VehicleFactory extends ToyFactory {
     private static VehicleFactory vehicleFactory;
 
     private VehicleFactory() {
@@ -23,11 +22,11 @@ public class VehicleFactory extends ToyFactory<Vehicle> {
     }
 
     @Override
-    public Vehicle buildToy(Type toyType) {
+    public Vehicle buildToy(Type type) {
         Vehicle vehicle = null;
         VehicleBuilder vehicleBuilder = null;
 
-        switch (toyType) {
+        switch (type) {
             case OUI_OUI_CAR -> {
                 vehicleBuilder = CarBuilder.getInstance();
                 CarBuilder.getInstance().setCarType(Type.OUI_OUI_CAR);
@@ -44,11 +43,13 @@ public class VehicleFactory extends ToyFactory<Vehicle> {
 
 
         if (vehicleBuilder != null) {
-            vehicleBuilder.setName(toyType);
+            vehicleBuilder.create();
             vehicleBuilder.buildWheels();
             vehicleBuilder.buildMotor();
+            vehicleBuilder.paint();
 
             vehicle = vehicleBuilder.getVehicle();
+            vehicle.setName(type.getName());
         }
 
         return vehicle;

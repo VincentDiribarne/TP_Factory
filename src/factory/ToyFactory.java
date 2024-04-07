@@ -1,7 +1,10 @@
 package factory;
 
-import toy.Type;
+import toy.Toy;
+import toy.enumeration.Type;
 
-public abstract class ToyFactory<T> {
-    public abstract T buildToy(Type type);
+public abstract class ToyFactory {
+    protected Toy toy;
+
+    public abstract Toy buildToy(Type type);
 }

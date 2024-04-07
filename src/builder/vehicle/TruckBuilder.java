@@ -1,6 +1,8 @@
-package builder.plush;
+package builder.vehicle;
 
-import toy.vehicule.Motor;
+import toy.enumeration.Color;
+import toy.enumeration.Motor;
+import toy.vehicule.Truck;
 
 public class TruckBuilder extends VehicleBuilder {
     private static TruckBuilder instance;
@@ -15,6 +17,12 @@ public class TruckBuilder extends VehicleBuilder {
 
         return instance;
     }
+
+    @Override
+    public void create() {
+        vehicle = new Truck();
+    }
+
     @Override
     public void buildWheels() {
         vehicle.setNbWheels(8);
@@ -23,5 +31,10 @@ public class TruckBuilder extends VehicleBuilder {
     @Override
     public void buildMotor() {
         vehicle.setMotor(Motor.GASOLINE);
+    }
+
+    @Override
+    public void paint() {
+        vehicle.setColor(Color.YELLOW);
     }
 }

@@ -1,4 +1,4 @@
-package toy;
+package toy.enumeration;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
