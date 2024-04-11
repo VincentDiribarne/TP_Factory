@@ -1,4 +1,5 @@
 import factory.PlushFactory;
+import factory.ToyFactory;
 import factory.VehicleFactory;
 import toy.Toy;
 import toy.enumeration.Type;
@@ -67,15 +68,7 @@ public class Chest {
             Type type = Type.values()[random.nextInt(Type.values().length)];
             Toy toy = null;
 
-            switch (type) {
-                case OUI_OUI_CAR, BATMAN_CAR, SCOOTER, TRUCK -> {
-                    toy = VehicleFactory.getInstance().buildToy(type);
-                }
-
-                case CAT_PLUSH, LION_PLUSH, OUI_OUI_PLUSH, OBELIX_PLUSH -> {
-                    toy = PlushFactory.getInstance().buildToy(type);
-                }
-            }
+            toy = ToyFactory.getFactory(type).buildToy(type);
 
             if (toy != null) {
                 toys.add(toy);
