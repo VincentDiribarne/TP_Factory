@@ -1,6 +1,4 @@
-import factory.PlushFactory;
 import factory.ToyFactory;
-import factory.VehicleFactory;
 import toy.Toy;
 import toy.enumeration.Type;
 
@@ -66,9 +64,7 @@ public class Chest {
 
         for (int i = 0; i < nbItems; i++) {
             Type type = Type.values()[random.nextInt(Type.values().length)];
-            Toy toy = null;
-
-            toy = ToyFactory.getFactory(type).buildToy(type);
+            Toy toy = ToyFactory.getFactory(type).buildToy(type);
 
             if (toy != null) {
                 toys.add(toy);
