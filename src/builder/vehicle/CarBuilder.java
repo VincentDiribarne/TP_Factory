@@ -4,14 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 import toy.enumeration.Color;
 import toy.enumeration.Motor;
-import toy.enumeration.Type;
 import toy.vehicule.Car;
 
 
 @Getter
 @Setter
 public class CarBuilder extends VehicleBuilder {
-    private Type carType;
     private static CarBuilder instance;
 
     private CarBuilder() {

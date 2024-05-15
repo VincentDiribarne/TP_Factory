@@ -30,6 +30,7 @@ public class PersonPlushBuilder extends PlushBuilder {
     @Override
     public void create() {
         plush = new PersonPlush();
+        plush.setType(PlushType.PERSON);
     }
 
     @Override
@@ -50,8 +51,6 @@ public class PersonPlushBuilder extends PlushBuilder {
 
     @Override
     public void paint() {
-        plush.setType(PlushType.PERSON);
-
         switch (getPlushType()) {
             case OBELIX_PLUSH -> plush.setColor(Color.WHITE);
             case OUI_OUI_PLUSH -> plush.setColor(Color.RED);

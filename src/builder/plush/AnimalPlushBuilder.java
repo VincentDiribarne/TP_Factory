@@ -30,6 +30,7 @@ public class AnimalPlushBuilder extends PlushBuilder {
     @Override
     public void create() {
         plush = new AnimalPlush();
+        plush.setType(PlushType.ANIMAL);
     }
 
     @Override
@@ -50,8 +51,6 @@ public class AnimalPlushBuilder extends PlushBuilder {
 
     @Override
     public void paint() {
-        plush.setType(PlushType.ANIMAL);
-
         switch (getPlushType()) {
             case LION_PLUSH -> plush.setColor(Color.ORANGE);
             case CAT_PLUSH -> plush.setColor(Color.BLACK);
