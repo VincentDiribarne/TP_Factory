@@ -13,7 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 public class AnimalPlushBuilder extends PlushBuilder {
-    private Type plushType;
     private static AnimalPlushBuilder instance;
 
     private AnimalPlushBuilder() {
@@ -35,7 +34,7 @@ public class AnimalPlushBuilder extends PlushBuilder {
 
     @Override
     public void setHeight() {
-        switch (getPlushType()) {
+        switch (getType()) {
             case LION_PLUSH -> plush.setSize(40);
             case CAT_PLUSH -> plush.setSize(15);
         }
@@ -43,7 +42,7 @@ public class AnimalPlushBuilder extends PlushBuilder {
 
     @Override
     public void fill() {
-        switch (getPlushType()) {
+        switch (getType()) {
             case LION_PLUSH -> plush.setMaterials(List.of(Material.WOOL, Material.POLYESTER));
             case CAT_PLUSH -> plush.setMaterials(List.of(Material.ACRYLIC, Material.POLYESTER, Material.WOOL));
         }
@@ -51,7 +50,7 @@ public class AnimalPlushBuilder extends PlushBuilder {
 
     @Override
     public void paint() {
-        switch (getPlushType()) {
+        switch (getType()) {
             case LION_PLUSH -> plush.setColor(Color.ORANGE);
             case CAT_PLUSH -> plush.setColor(Color.BLACK);
         }

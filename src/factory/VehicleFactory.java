@@ -33,7 +33,7 @@ public class VehicleFactory extends ToyFactory {
         }
 
         if (vehicleBuilder != null) {
-            vehicleBuilder.setCarType(type);
+            vehicleBuilder.setType(type);
 
             vehicleBuilder.create();
             vehicleBuilder.setName();

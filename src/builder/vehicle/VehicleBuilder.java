@@ -1,25 +1,18 @@
 package builder.vehicle;
 
-import builder.Constructable;
-import lombok.AccessLevel;
+import builder.GlobalBuilder;
 import lombok.Getter;
-import lombok.Setter;
-import toy.enumeration.Type;
 import toy.vehicule.Vehicle;
 
 @Getter
-@Setter
-public abstract class VehicleBuilder implements Constructable {
-    private Type carType;
-
-    @Setter(AccessLevel.NONE)
+public abstract class VehicleBuilder extends GlobalBuilder {
     protected Vehicle vehicle;
-
-    public abstract void buildWheels();
 
     public abstract void buildMotor();
 
+    public abstract void buildWheels();
+
     public void setName() {
-        vehicle.setName(carType.getName());
+        vehicle.setName(getType().getName());
     }
 }

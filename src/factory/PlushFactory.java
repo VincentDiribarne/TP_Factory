@@ -32,7 +32,7 @@ public class PlushFactory extends ToyFactory {
         }
 
         if (plushBuilder != null) {
-            plushBuilder.setPlushType(type);
+            plushBuilder.setType(type);
 
             plushBuilder.create();
             plushBuilder.setName();

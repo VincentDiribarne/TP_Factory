@@ -11,7 +11,6 @@ import java.util.Random;
 public class Chest {
     private static Chest chest = null;
     private final List<Toy> toys = new ArrayList<>();
-
     private boolean limit = false;
 
     private Chest() {
@@ -39,7 +38,7 @@ public class Chest {
                 limit = true;
             }
         } else {
-            System.out.println("Erreur lors de la saisie\n");
+            System.out.println("Erreur lors de la saisie");
             limitItems();
         }
     }
@@ -53,17 +52,22 @@ public class Chest {
             int nbItems = Integer.parseInt(howManyItems);
 
             if (nbItems < 0) {
-                generateError("Le nombre d'objet doit être positif");
+                howManyItemsError("Le nombre d'objet doit être positif");
             } else if (limit && nbItems > 10) {
-                generateError("Le nombre doit être inférieur à 10, vous avez activez la limite");
+                howManyItemsError("Le nombre doit être inférieur à 10, vous avez activez la limite");
             } else {
                 generate(nbItems);
                 display();
             }
         } else {
-            generateError("Erreur lors de la saisie");
+            howManyItemsError("Erreur lors de la saisie");
         }
 
+    }
+
+    private void howManyItemsError(String message) {
+        System.out.println(message);
+        howManyItems();
     }
 
     private String keyBoardLine() {
@@ -78,12 +82,6 @@ public class Chest {
 
         return line;
     }
-
-    private void generateError(String message) {
-        System.out.println(message);
-        howManyItems();
-    }
-
 
     private void generate(int nbItems) {
         Random random = new Random();

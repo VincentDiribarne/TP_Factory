@@ -1,18 +1,11 @@
 package builder.plush;
 
-import builder.Constructable;
-import lombok.AccessLevel;
+import builder.GlobalBuilder;
 import lombok.Getter;
-import lombok.Setter;
-import toy.enumeration.Type;
 import toy.plush.Plush;
 
 @Getter
-@Setter
-public abstract class PlushBuilder implements Constructable {
-    private Type plushType;
-
-    @Setter(AccessLevel.NONE)
+public abstract class PlushBuilder extends GlobalBuilder {
     protected Plush plush;
 
     public abstract void setHeight();
@@ -20,6 +13,6 @@ public abstract class PlushBuilder implements Constructable {
     public abstract void fill();
 
     public void setName() {
-        plush.setName(plushType.getName());
+        plush.setName(getType().getName());
     }
 }

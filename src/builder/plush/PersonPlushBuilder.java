@@ -5,7 +5,6 @@ import lombok.Setter;
 import toy.enumeration.Color;
 import toy.enumeration.Material;
 import toy.enumeration.PlushType;
-import toy.enumeration.Type;
 import toy.plush.PersonPlush;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.List;
 @Getter
 @Setter
 public class PersonPlushBuilder extends PlushBuilder {
-    private Type plushType;
     private static PersonPlushBuilder instance;
 
     private PersonPlushBuilder() {
@@ -35,7 +33,7 @@ public class PersonPlushBuilder extends PlushBuilder {
 
     @Override
     public void setHeight() {
-        switch (getPlushType()) {
+        switch (getType()) {
             case OBELIX_PLUSH -> plush.setSize(50);
             case OUI_OUI_PLUSH -> plush.setSize(30);
         }
@@ -43,7 +41,7 @@ public class PersonPlushBuilder extends PlushBuilder {
 
     @Override
     public void fill() {
-        switch (getPlushType()) {
+        switch (getType()) {
             case OBELIX_PLUSH -> plush.setMaterials(List.of(Material.COTTON, Material.POLYESTER));
             case OUI_OUI_PLUSH -> plush.setMaterials(List.of(Material.WOOL, Material.POLYESTER));
         }
@@ -51,7 +49,7 @@ public class PersonPlushBuilder extends PlushBuilder {
 
     @Override
     public void paint() {
-        switch (getPlushType()) {
+        switch (getType()) {
             case OBELIX_PLUSH -> plush.setColor(Color.WHITE);
             case OUI_OUI_PLUSH -> plush.setColor(Color.RED);
         }

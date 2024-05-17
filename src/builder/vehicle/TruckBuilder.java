@@ -24,13 +24,13 @@ public class TruckBuilder extends VehicleBuilder {
     }
 
     @Override
-    public void buildWheels() {
-        vehicle.setNbWheels(8);
+    public void buildMotor() {
+        vehicle.setMotor(Motor.GASOLINE);
     }
 
     @Override
-    public void buildMotor() {
-        vehicle.setMotor(Motor.GASOLINE);
+    public void buildWheels() {
+        vehicle.setNbWheels(8);
     }
 
     @Override

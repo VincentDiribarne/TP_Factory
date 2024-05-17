@@ -15,12 +15,19 @@ public abstract class Plush extends Toy {
     private List<Material> materials;
     private int size;
 
-    private String getMaterials() {
+    @Override
+    public String toString() {
+        return getName() +
+                " de couleur " + getColor().getName() + " (" + getColor().getHexCode() + "), de " +
+                getSize() + " cm en " + transformMaterialsToString();
+    }
+
+    private String transformMaterialsToString() {
         StringBuilder result = new StringBuilder();
-        int size = materials.size();
+        int size = getMaterials().size();
         int index = 0;
 
-        for (Material material : materials) {
+        for (Material material : getMaterials()) {
             if (index == size - 1) {
                 result.append(material.getName());
                 break;
@@ -36,12 +43,5 @@ public abstract class Plush extends Toy {
         }
 
         return result.toString();
-    }
-
-    @Override
-    public String toString() {
-        return getName() +
-                " de couleur " + getColor().getName() + " (" + getColor().getHexCode() + "), de " +
-                getSize() + " cm en " + getMaterials();
     }
 }
