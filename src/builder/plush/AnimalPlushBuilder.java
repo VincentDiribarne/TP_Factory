@@ -5,7 +5,6 @@ import lombok.Setter;
 import toy.enumeration.Color;
 import toy.enumeration.Material;
 import toy.enumeration.PlushType;
-import toy.enumeration.Type;
 import toy.plush.AnimalPlush;
 
 import java.util.List;
