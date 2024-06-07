@@ -27,29 +27,21 @@ public class VehicleFactory extends ToyFactory {
         VehicleBuilder vehicleBuilder = null;
 
         switch (type) {
-            case OUI_OUI_CAR -> {
-                vehicleBuilder = CarBuilder.getInstance();
-                CarBuilder.getInstance().setCarType(Type.OUI_OUI_CAR);
-            }
-
-            case BATMAN_CAR -> {
-                vehicleBuilder = CarBuilder.getInstance();
-                CarBuilder.getInstance().setCarType(Type.BATMAN_CAR);
-            }
-
+            case OUI_OUI_CAR, BATMAN_CAR -> vehicleBuilder = CarBuilder.getInstance();
             case SCOOTER -> vehicleBuilder = ScooterBuilder.getInstance();
             case TRUCK -> vehicleBuilder = TruckBuilder.getInstance();
         }
 
-
         if (vehicleBuilder != null) {
+            vehicleBuilder.setType(type);
+
             vehicleBuilder.create();
+            vehicleBuilder.setName();
             vehicleBuilder.buildWheels();
             vehicleBuilder.buildMotor();
             vehicleBuilder.paint();
 
             vehicle = vehicleBuilder.getVehicle();
-            vehicle.setName(type.getName());
         }
 
         return vehicle;

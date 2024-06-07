@@ -24,16 +24,14 @@ public class ScooterBuilder extends VehicleBuilder {
     }
 
     @Override
-    public void buildWheels() {
-        vehicle.setNbWheels(2);
-    }
-
-    @Override
     public void buildMotor() {
         vehicle.setMotor(Motor.DIESEL);
     }
 
-
+    @Override
+    public void buildWheels() {
+        vehicle.setNbWheels(2);
+    }
 
     @Override
     public void paint() {

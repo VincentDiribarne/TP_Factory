@@ -27,25 +27,20 @@ public class PlushFactory extends ToyFactory {
         PlushBuilder plushBuilder = null;
 
         switch (type) {
-            case CAT_PLUSH, LION_PLUSH -> {
-                plushBuilder = AnimalPlushBuilder.getInstance();
-                AnimalPlushBuilder.getInstance().setPlushType(type);
-            }
-
-            case OUI_OUI_PLUSH, OBELIX_PLUSH -> {
-                plushBuilder = PersonPlushBuilder.getInstance();
-                PersonPlushBuilder.getInstance().setPlushType(type);
-            }
+            case CAT_PLUSH, LION_PLUSH -> plushBuilder = AnimalPlushBuilder.getInstance();
+            case OUI_OUI_PLUSH, OBELIX_PLUSH -> plushBuilder = PersonPlushBuilder.getInstance();
         }
 
         if (plushBuilder != null) {
+            plushBuilder.setType(type);
+
             plushBuilder.create();
+            plushBuilder.setName();
             plushBuilder.paint();
             plushBuilder.setHeight();
             plushBuilder.fill();
 
             plush = plushBuilder.getPlush();
-            plush.setName(type.getName());
         }
 
         return plush;

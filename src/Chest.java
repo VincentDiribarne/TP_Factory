@@ -11,6 +11,7 @@ import java.util.Random;
 public class Chest {
     private static Chest chest = null;
     private final List<Toy> toys = new ArrayList<>();
+    private boolean limit = false;
 
     private Chest() {
     }
@@ -24,40 +25,63 @@ public class Chest {
     }
 
     public void open() {
+        limitItems();
         howManyItems();
+    }
+
+    private void limitItems() {
+        System.out.print("Voulez vous limiter à 10 items maximum ? (y/n) : ");
+        String confirmLimit = keyBoardLine();
+
+        if (confirmLimit != null && (confirmLimit.equals("y") || confirmLimit.equals("n"))) {
+            if (confirmLimit.equals("y")) {
+                limit = true;
+            }
+        } else {
+            System.out.println("Erreur lors de la saisie");
+            limitItems();
+        }
     }
 
 
     private void howManyItems() {
-        BufferedReader reader;
-        String ligne;
+        System.out.printf("\nCombien d'objet voulez-vous dans le coffre ? %s : ", (limit ? "(max 10)" : ""));
+        String howManyItems = keyBoardLine();
 
-        System.out.print("Combien d'objet voulez-vous dans le coffre ? : ");
+        if (howManyItems != null) {
+            int nbItems = Integer.parseInt(howManyItems);
 
-        try {
-            reader = new BufferedReader(new InputStreamReader(System.in));
-            ligne = reader.readLine();
-
-            if (ligne != null) {
-                int nbItems = Integer.parseInt(ligne);
-
-                if (nbItems < 0) {
-                    generateError("Le nombre d'objet doit être positif");
-                } else {
-                    generate(nbItems);
-                    display();
-                }
+            if (nbItems < 0) {
+                howManyItemsError("Le nombre d'objet doit être positif");
+            } else if (limit && nbItems > 10) {
+                howManyItemsError("Le nombre doit être inférieur à 10, vous avez activez la limite");
+            } else {
+                generate(nbItems);
+                display();
             }
-        } catch (Exception e) {
-            generateError("Erreur lors de la saisie");
+        } else {
+            howManyItemsError("Erreur lors de la saisie");
         }
+
     }
 
-    private void generateError(String message) {
-        System.out.println(message + "\n");
+    private void howManyItemsError(String message) {
+        System.out.println(message);
         howManyItems();
     }
 
+    private String keyBoardLine() {
+        String line = null;
+
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            line = reader.readLine();
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la saisie");
+        }
+
+        return line;
+    }
 
     private void generate(int nbItems) {
         Random random = new Random();
